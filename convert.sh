@@ -49,7 +49,8 @@ for filename in ./data/*; do
 	echo "Converting ${filename}"
     echo "Output: ${output}"
 
-	convert "${filename}" -colorspace Gray -contrast-stretch 0x5% $output
+	convert "${filename}" -colorspace Gray -sigmoidal-contrast 8x50% -contrast-stretch 0x10% -morphology Erode Octagon:1 -morphology Dilate Octagon:1 $output
+
 	counter=$((counter + 1))
 done
 
