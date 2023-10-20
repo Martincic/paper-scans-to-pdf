@@ -16,31 +16,41 @@ counter=0
 
 for filename in ./data/*; do
 	extension="${filename##*.}"
-	output="rotate/${counter}.${extension}"
+	if [ "$counter" -le 9 ]; then
+        output="output/0${counter}.${extension}"
+	else
+		output="output/${counter}.${extension}"
+	fi
 
 	echo $(date +%H:%M:%S)
 	echo "Converting ${filename}"
-	echo "Output: ${output}\n\n"
+	echo "Output: ${output}"
 
 	convert "${filename}" -auto-orient -rotate "90>" $output
 	counter=$((counter + 1))
 done
 
-
 # Convert images to grayscale, fix contrast and shaddows
 echo -e "\e[32m\e[1mCleaning up colors and contrast\e[0m"
 echo $(date +%H:%M:%S)
-counter=0
-for filename in ./data/*; do
-        extension="${filename##*.}"
-        output="output/${counter}.${extension}"
 
+counter=0
+
+for filename in ./data/*; do
+	extension="${filename##*.}"
+
+	if [ "$counter" -le 9 ]; then
+			output="output/0${counter}.${extension}"
+	else
+			output="output/${counter}.${extension}"
+	fi
+	
 	echo $(date +%H:%M:%S)
 	echo "Converting ${filename}"
-        echo "Output: ${output}\n\n"
+    echo "Output: ${output}"
 
-	convert "${filename}" -colorspace Gray -contrast-stretch 0x10% $output
-        counter=$((counter + 1))
+	convert "${filename}" -colorspace Gray -contrast-stretch 0x5% $output
+	counter=$((counter + 1))
 done
 
 # Images to PDF file
