@@ -6,6 +6,9 @@ Taking bunch of written papers, assignments, exams and converting them to single
 This PDF can be imported into digital notepads, notebooks, tablets, and be 
 graded as actual paper examination.
 
+**Image optimization for e-ink display**
+![Image optimization for e-ink display example](./example.png)
+
 ## TODO
 > Add PDF cutter/splitter
  - Input: array [Name, start page, end page]
