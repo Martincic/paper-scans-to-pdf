@@ -15,7 +15,7 @@ graded as actual paper examination.
  - Output: folder with bunch of PDFs cut per student, named accordingly
 
 ## Usage
-1. Create ./data folder
+1. Add images to ./data folder
 2. Add images to ./data folder (png, jpg, jpeg, ...)
 3. run ./convert.sh
 4. Open compiled.pdf
